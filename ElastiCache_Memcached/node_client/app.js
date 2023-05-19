@@ -1,7 +1,11 @@
 var Memcached = require('memcached');
 
-//var clusterEndpoint = "<INSERT_CLUSTER_ENDPOINT>";
-var clusterEndpoint = "deletemeeccluster.llgnjm.cfg.use2.cache.amazonaws.com";
+var clusterEndpoint = "<INSERT_CLUSTER_ENDPOINT>";
+
+/*
+ * NOTE: this must be run from inside the VPC where the cluster is deployed.
+ *       See: https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/accessing-elasticache.html#access-from-outside-aws 
+ */
 
 var memcached = new Memcached(clusterEndpoint+':11211');
 
