@@ -1,4 +1,4 @@
-// From: https://github.com/redis/node-redis
+//Modified From: https://github.com/redis/node-redis
 
 
 // A sample subscriber showing how the subscribe method and pSubscribe method work.
@@ -9,8 +9,8 @@
 import { createClient} from 'redis';
 
 // Create and connect client before executing any Redis commands.
-var connection_url = 'redis://INSERT_ENDPOINT:6380';
-const client = createClient({ url:connection_url });
+var connection_url = 'rediss://username:passwordpassword@INSERT_ENDPOINT:6379';
+const client = createClient( { url: connection_url, defaults: { socket: { tls: true } } });
 await client.connect();
 
 // Each subscriber needs to connect individually therefore we duplicate the client.

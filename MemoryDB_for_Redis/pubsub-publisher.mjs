@@ -1,15 +1,18 @@
-//From: https://github.com/redis/node-redis
+//Modified From: https://github.com/redis/node-redis
 
 
 // A sample publisher using the publish function to put message on different channels.
 // https://redis.io/commands/publish/
 import { createClient } from 'redis';
 
-var connection_url = 'redis://INSERT_ENDPOINT:6380';
+var connection_url = 'rediss://username:passwordpassword@INSERT_ENDPOINT:6379';
 
-const client = createClient({ url:connection_url });
+const client = createClient( { url: connection_url, defaults: { socket: { tls: true } } });
+
+console.log("here");
 
 await client.connect();
+console.log("here2");
 
 // Declare constant variables for the name of the clients we will publish to as they will be required for logging.
 const channel1 = 'chan1nel';
