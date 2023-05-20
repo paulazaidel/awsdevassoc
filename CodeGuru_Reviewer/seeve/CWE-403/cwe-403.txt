@@ -1,1 +1,0 @@
-Exposure of file descriptor to unintended control sphere
