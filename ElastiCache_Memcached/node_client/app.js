@@ -11,7 +11,7 @@ var memcached = new Memcached(clusterEndpoint+':11211');
 
 function setValue(key, value) {
   /* Set 'key' to 'value' */
-  memcached.set('foo', 'bar', 30, function (err) { 
+  memcached.set(key, value, 30, function (err) { 
     if (err) {
       console.log("setValue(key: " + key + "):: SET ERROR: " + err);
     } else {
@@ -34,7 +34,7 @@ function getValue(key) {
 
 // Set a value
 console.log("Calling putValue");
-setValue("now", Date.now());
+setValue("now", ""+Date.now());
 
 // Read the value
 setTimeout(
