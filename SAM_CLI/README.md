@@ -429,3 +429,23 @@ ubuntu@ip-172-31-0-250:~/hw/sam-app$ curl https://xniva3vs0j.execute-api.us-east
 {"message": "hello there, friend"}
 ubuntu@ip-172-31-0-250:~/hw/sam-app$
 ```
+
+
+### Delete the application and all resources
+NOTE: this does not delete ALL resources.  For example, the S3 bucket will remain.
+```
+ubuntu@ip-172-31-0-250:~/hw/sam-app$ sam delete
+	Are you sure you want to delete the stack sam-app in the region us-east-2 ? [y/N]: y
+	Do you want to delete the template file 6ba5c7b80fc9bfafd7433b47fdda1979.template in S3? [y/N]: y
+        - Deleting S3 object with key 64a67661a89fd1be74a1bc69dddfab17
+        - Deleting S3 object with key b41318fe9bbc85deaadb18f1a887386d.template
+        - Deleting S3 object with key 6ba5c7b80fc9bfafd7433b47fdda1979.template
+	- Deleting Cloudformation stack sam-app
+
+Deleted successfully
+ubuntu@ip-172-31-0-250:~/hw/sam-app$
+```
+
+## Note
+You can use `sam local invoke` to to test locally.  Also, `sam local start-api` will launch a docker container with the API.
+
