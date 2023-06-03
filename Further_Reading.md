@@ -197,6 +197,8 @@ https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/index.html
 
 ## Systems Manager
 https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html  
+https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-permissions.html
+https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html
 
 ## AppConfig
 https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html  
