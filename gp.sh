@@ -18,4 +18,5 @@ echo "Pushing Files."
 #git push -u origin APIG
 #git push -u origin cloudwatch
 #git push -u origin ECS
-git push -u origin 202305
+#git push -u origin 202305
+git push -u origin 202306-nuc
