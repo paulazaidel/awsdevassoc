@@ -10,5 +10,5 @@ git add . --all
 echo "Committing Files."
 git commit -m "$DATE $1"
 echo "Pushing Files."
-#git push -u origin master
-git push -u origin 202306-nuc
+git push -u origin master
+#git push -u origin 202306-nuc
