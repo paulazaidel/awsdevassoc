@@ -10,11 +10,14 @@ PLATFORM=$(uname -s)_$ARCH
 
 echo ">>>>>   curl -sLO 'https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz'"
 curl -sLO "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+echo
 
 
 
 echo ">>>>>   tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz"
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+echo
 
 echo ">>>>>   sudo mv /tmp/eksctl /usr/local/bin"
 sudo mv /tmp/eksctl /usr/local/bin
+echo
