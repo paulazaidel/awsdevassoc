@@ -78,4 +78,39 @@ Press Ctrl-C to kill or enter to continue.
 ## Delete namespace
 
 ## Delete cluster
+```
+[nick@nuc EKS]$ sh 8_delete_cluster.sh 
+>>>>>   eksctl get clusters
+NAME                    REGION          EKSCTL CREATED
+DeleteMeEKSCluster      us-east-2       True
+
+>>>>> Delete which cluster?
+DeleteMeEKSCluster
+
+>>>>>   eksctl delete cluster --name DeleteMeEKSCluster
+2023-06-09 14:08:26 [ℹ]  deleting EKS cluster "DeleteMeEKSCluster"
+2023-06-09 14:08:26 [ℹ]  will drain 0 unmanaged nodegroup(s) in cluster "DeleteMeEKSCluster"
+2023-06-09 14:08:26 [ℹ]  starting parallel draining, max in-flight of 1
+2023-06-09 14:08:27 [ℹ]  deleted 0 Fargate profile(s)
+2023-06-09 14:08:28 [✔]  kubeconfig has been updated
+2023-06-09 14:08:28 [ℹ]  cleaning up AWS load balancers created by Kubernetes objects of Kind Service or Ingress
+2023-06-09 14:08:30 [ℹ]  
+2 sequential tasks: { delete nodegroup "ng-9ef053c7", delete cluster control plane "DeleteMeEKSCluster" [async] 
+}
+2023-06-09 14:08:30 [ℹ]  will delete stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 14:08:30 [ℹ]  waiting for stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7" to get deleted
+2023-06-09 14:08:30 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 14:09:00 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 14:09:38 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 14:10:37 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 14:12:07 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 14:13:37 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 14:15:01 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 14:15:59 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 14:17:47 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 14:17:47 [ℹ]  will delete stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 14:17:48 [✔]  all cluster resources were deleted
+
+>>>>>   Please check the CloudFormation console -> stack -> resources to ensure everything was deleted.
+```
 
