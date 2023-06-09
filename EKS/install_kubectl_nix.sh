@@ -14,8 +14,8 @@ echo ">>>>>   chmod +x kubectl"
 chmod +x kubectl
 echo
 
-echo ">>>>>   mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH"
-mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+echo ">>>>>   mkdir -p $HOME/bin && mv ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH"
+mkdir -p $HOME/bin && mv ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
 echo
 
 echo ">>>>>   Adding to .bashrc"
