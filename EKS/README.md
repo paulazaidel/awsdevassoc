@@ -1,88 +1,81 @@
 # EKS
 
+## Install kubectl
+
+## Install eksctl
+
+## Deploy EKS Cluster using eksctl
+Note the time it takes for this to finish.  
+
+```
+[nick@nuc EKS]$ sh 2_create_cluster_eksctl.sh
+!!! NOTE !!!
+This creates a large amount of resources in your account, some are not free.
+Press Ctrl-C to kill or enter to continue.
+
+>>>>>   Creating managed nodes cluster in us-east-2
+>>>>>   eksctl create cluster --name DeleteMeEKSCluster --region us-east-2
+2023-06-09 13:35:42 [ℹ]  eksctl version 0.144.0
+2023-06-09 13:35:42 [ℹ]  using region us-east-2
+2023-06-09 13:35:42 [ℹ]  setting availability zones to [us-east-2b us-east-2c us-east-2a]
+2023-06-09 13:35:42 [ℹ]  subnets for us-east-2b - public:192.168.0.0/19 private:192.168.96.0/19
+2023-06-09 13:35:42 [ℹ]  subnets for us-east-2c - public:192.168.32.0/19 private:192.168.128.0/19
+2023-06-09 13:35:42 [ℹ]  subnets for us-east-2a - public:192.168.64.0/19 private:192.168.160.0/19
+2023-06-09 13:35:42 [ℹ]  nodegroup "ng-9ef053c7" will use "" [AmazonLinux2/1.25]
+2023-06-09 13:35:42 [ℹ]  using Kubernetes version 1.25
+2023-06-09 13:35:42 [ℹ]  creating EKS cluster "DeleteMeEKSCluster" in "us-east-2" region with managed nodes
+2023-06-09 13:35:42 [ℹ]  will create 2 separate CloudFormation stacks for cluster itself and the initial managed nodegroup
+2023-06-09 13:35:42 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=us-east-2 --cluster=DeleteMeEKSCluster'
+2023-06-09 13:35:42 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "DeleteMeEKSCluster" in "us-east-2"
+2023-06-09 13:35:42 [ℹ]  CloudWatch logging will not be enabled for cluster "DeleteMeEKSCluster" in "us-east-2"
+2023-06-09 13:35:42 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=us-east-2 --cluster=DeleteMeEKSCluster'
+2023-06-09 13:35:42 [ℹ]
+2 sequential tasks: { create cluster control plane "DeleteMeEKSCluster",
+    2 sequential sub-tasks: {
+        wait for control plane to become ready,
+        create managed nodegroup "ng-9ef053c7",
+    }
+}
+2023-06-09 13:35:42 [ℹ]  building cluster stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:35:43 [ℹ]  deploying stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:36:13 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:36:43 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:37:44 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:38:44 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:39:45 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:40:45 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:41:46 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:42:46 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:43:47 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:44:47 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+2023-06-09 13:45:48 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
+
+2023-06-09 13:47:51 [ℹ]  building managed nodegroup stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 13:47:52 [ℹ]  deploying stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 13:47:52 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 13:48:23 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 13:49:13 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 13:50:05 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
+2023-06-09 13:50:05 [ℹ]  waiting for the control plane to become ready
+2023-06-09 13:50:06 [✔]  saved kubeconfig as "/home/nick/.kube/config"
+2023-06-09 13:50:06 [ℹ]  no tasks
+2023-06-09 13:50:06 [✔]  all EKS cluster resources for "DeleteMeEKSCluster" have been created
+2023-06-09 13:50:06 [ℹ]  nodegroup "ng-9ef053c7" has 2 node(s)
+2023-06-09 13:50:06 [ℹ]  node "ip-192-168-39-55.us-east-2.compute.internal" is ready
+2023-06-09 13:50:06 [ℹ]  node "ip-192-168-71-60.us-east-2.compute.internal" is ready
+2023-06-09 13:50:06 [ℹ]  waiting for at least 2 node(s) to become ready in "ng-9ef053c7"
+2023-06-09 13:50:06 [ℹ]  nodegroup "ng-9ef053c7" has 2 node(s)
+2023-06-09 13:50:06 [ℹ]  node "ip-192-168-39-55.us-east-2.compute.internal" is ready
+2023-06-09 13:50:06 [ℹ]  node "ip-192-168-71-60.us-east-2.compute.internal" is ready
+2023-06-09 13:50:07 [ℹ]  kubectl command should work with "/home/nick/.kube/config", try 'kubectl get nodes'
+2023-06-09 13:50:07 [✔]  EKS cluster "DeleteMeEKSCluster" in "us-east-2" region is ready
+```
+
 ## Configure kubectl using AWS CLI
 
-### Get Cluster Name
-```
-$ aws eks list-clusters
-{
-    "clusters": [
-        "DeleteMeEKSCluster"
-    ]
-}
-```
+## Deploy sample application and service
 
-### Configure kubeconfig
-```
-$ aws eks update-kubeconfig --name DeleteMeEKSCluster
-Added new context arn:aws:eks:us-east-2:146868985163:cluster/DeleteMeEKSCluster to /Users/nick/.kube/config
-```
+## Delete namespace
 
-### Verify
-```
-$ ./kubectl get pods --all-namespaces
-NAMESPACE     NAME                       READY   STATUS    RESTARTS   AGE
-kube-system   coredns-647484dc8b-6qtwp   0/1     Pending   0          51m
-kube-system   coredns-647484dc8b-mvwcv   0/1     Pending   0          51m
+## Delete cluster
 
-$ ./kubectl config view
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: DATA+OMITTED
-    server: https://42E90778CEF986332C7F145899BF12DE.gr7.us-east-2.eks.amazonaws.com
-  name: arn:aws:eks:us-east-2:146868985163:cluster/DeleteMeEKSCluster
-contexts:
-- context:
-    cluster: arn:aws:eks:us-east-2:146868985163:cluster/DeleteMeEKSCluster
-    user: arn:aws:eks:us-east-2:146868985163:cluster/DeleteMeEKSCluster
-  name: arn:aws:eks:us-east-2:146868985163:cluster/DeleteMeEKSCluster
-current-context: arn:aws:eks:us-east-2:146868985163:cluster/DeleteMeEKSCluster
-kind: Config
-preferences: {}
-users:
-- name: arn:aws:eks:us-east-2:146868985163:cluster/DeleteMeEKSCluster
-  user:
-    exec:
-      apiVersion: client.authentication.k8s.io/v1beta1
-      args:
-      - --region
-      - us-east-2
-      - eks
-      - get-token
-      - --cluster-name
-      - DeleteMeEKSCluster
-      command: aws
-      env: null
-      interactiveMode: IfAvailable
-      provideClusterInfo: false
-```
-
-## Deploy hello-node
-```
-$ ./kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
-deployment.apps/hello-node created
-
-$ ./kubectl get deployments
-NAME         READY   UP-TO-DATE   AVAILABLE   AGE
-hello-node   0/1     1            0           24s
-
-$ ./kubectl get pods
-NAME                          READY   STATUS    RESTARTS   AGE
-hello-node-7579565d66-vk2b7   0/1     Pending   0          43s
-
-$ ./kubectl get events
-LAST SEEN   TYPE      REASON              OBJECT                             MESSAGE
-56s         Warning   FailedScheduling    pod/hello-node-7579565d66-vk2b7    no nodes available to schedule pods
-56s         Normal    SuccessfulCreate    replicaset/hello-node-7579565d66   Created pod: hello-node-7579565d66-vk2b7
-56s         Normal    ScalingReplicaSet   deployment/hello-node              Scaled up replica set hello-node-7579565d66 to 1
-```
-
-## Expose hello-node
-```
-Mac-2:~ nick$ ./kubectl get services
-NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   54m
-
-
-```
