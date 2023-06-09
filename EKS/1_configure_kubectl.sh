@@ -4,7 +4,7 @@ echo ">>>>>   aws eks list-clusters"
 aws eks list-clusters
 echo
 
-echo -n ">>>>>   Enter cluster name: "
+echo ">>>>>   Enter cluster name: "
 read cluster
 echo
 
@@ -14,4 +14,4 @@ echo
 
 
 echo ">>>>> Verify, assuming kubectl is in the path"
-kubectl get pods --all-namesspaces
+kubectl get pods --all-namespaces
