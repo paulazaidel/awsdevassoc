@@ -1,116 +1,60 @@
 # EKS
 
 ## Install kubectl
+```
+[nick@nuc EKS]$ sh install_kubectl_nix.sh
+>>>>>   It depends on your OS/arch.  Visit the following URL and install >=1.27
+https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
+
+>>>>>   Attempting install...
+
+>>>>>   curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.27.1/2023-04-19/bin/linux/amd64/kubectl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 46.9M  100 46.9M    0     0  7601k      0  0:00:06  0:00:06 --:--:-- 8909k
+
+>>>>>   chmod +x kubectl
+
+>>>>>   mkdir -p /home/nick/bin && mv ./kubectl /home/nick/bin/kubectl && export PATH=/home/nick/bin:/home/nick/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/local/bin:/home/nick/bb/my_linux/bin:/home/nick/bin:/opt/code/bin:/home/nick/.local/bin:/home/nick/.dotnet
+
+>>>>>   Adding to .bashrc
+```
 
 ## Install eksctl
+```
+[nick@nuc EKS]$ sh install_eksctl_nix.sh
+>>>>>   It depends on your OS/arch.  Visit the following URL for info
+https://github.com/weaveworks/eksctl/blob/main/README.md#installation
+
+>>>>>   Attempting install...
+
+>>>>>   curl -sLO 'https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz'
+
+>>>>>   tar -xzf eksctl_Linux_amd64.tar.gz -C /tmp && rm eksctl_Linux_amd64.tar.gz
+
+>>>>>   sudo mv /tmp/eksctl /usr/local/bin
+[sudo] password for nick:
+```
 
 ## Deploy EKS Cluster using eksctl
 Note the time it takes for this to finish.  
 
 ```
-[nick@nuc EKS]$ sh 2_create_cluster_eksctl.sh
-!!! NOTE !!!
-This creates a large amount of resources in your account, some are not free.
-Press Ctrl-C to kill or enter to continue.
-
->>>>>   Creating managed nodes cluster in us-east-2
->>>>>   eksctl create cluster --name DeleteMeEKSCluster --region us-east-2
-2023-06-09 13:35:42 [ℹ]  eksctl version 0.144.0
-2023-06-09 13:35:42 [ℹ]  using region us-east-2
-2023-06-09 13:35:42 [ℹ]  setting availability zones to [us-east-2b us-east-2c us-east-2a]
-2023-06-09 13:35:42 [ℹ]  subnets for us-east-2b - public:192.168.0.0/19 private:192.168.96.0/19
-2023-06-09 13:35:42 [ℹ]  subnets for us-east-2c - public:192.168.32.0/19 private:192.168.128.0/19
-2023-06-09 13:35:42 [ℹ]  subnets for us-east-2a - public:192.168.64.0/19 private:192.168.160.0/19
-2023-06-09 13:35:42 [ℹ]  nodegroup "ng-9ef053c7" will use "" [AmazonLinux2/1.25]
-2023-06-09 13:35:42 [ℹ]  using Kubernetes version 1.25
-2023-06-09 13:35:42 [ℹ]  creating EKS cluster "DeleteMeEKSCluster" in "us-east-2" region with managed nodes
-2023-06-09 13:35:42 [ℹ]  will create 2 separate CloudFormation stacks for cluster itself and the initial managed nodegroup
-2023-06-09 13:35:42 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=us-east-2 --cluster=DeleteMeEKSCluster'
-2023-06-09 13:35:42 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "DeleteMeEKSCluster" in "us-east-2"
-2023-06-09 13:35:42 [ℹ]  CloudWatch logging will not be enabled for cluster "DeleteMeEKSCluster" in "us-east-2"
-2023-06-09 13:35:42 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=us-east-2 --cluster=DeleteMeEKSCluster'
-2023-06-09 13:35:42 [ℹ]
-2 sequential tasks: { create cluster control plane "DeleteMeEKSCluster",
-    2 sequential sub-tasks: {
-        wait for control plane to become ready,
-        create managed nodegroup "ng-9ef053c7",
-    }
-}
-2023-06-09 13:35:42 [ℹ]  building cluster stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:35:43 [ℹ]  deploying stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:36:13 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:36:43 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:37:44 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:38:44 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:39:45 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:40:45 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:41:46 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:42:46 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:43:47 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:44:47 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 13:45:48 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-cluster"
-
-2023-06-09 13:47:51 [ℹ]  building managed nodegroup stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 13:47:52 [ℹ]  deploying stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 13:47:52 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 13:48:23 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 13:49:13 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 13:50:05 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 13:50:05 [ℹ]  waiting for the control plane to become ready
-2023-06-09 13:50:06 [✔]  saved kubeconfig as "/home/nick/.kube/config"
-2023-06-09 13:50:06 [ℹ]  no tasks
-2023-06-09 13:50:06 [✔]  all EKS cluster resources for "DeleteMeEKSCluster" have been created
-2023-06-09 13:50:06 [ℹ]  nodegroup "ng-9ef053c7" has 2 node(s)
-2023-06-09 13:50:06 [ℹ]  node "ip-192-168-39-55.us-east-2.compute.internal" is ready
-2023-06-09 13:50:06 [ℹ]  node "ip-192-168-71-60.us-east-2.compute.internal" is ready
-2023-06-09 13:50:06 [ℹ]  waiting for at least 2 node(s) to become ready in "ng-9ef053c7"
-2023-06-09 13:50:06 [ℹ]  nodegroup "ng-9ef053c7" has 2 node(s)
-2023-06-09 13:50:06 [ℹ]  node "ip-192-168-39-55.us-east-2.compute.internal" is ready
-2023-06-09 13:50:06 [ℹ]  node "ip-192-168-71-60.us-east-2.compute.internal" is ready
-2023-06-09 13:50:07 [ℹ]  kubectl command should work with "/home/nick/.kube/config", try 'kubectl get nodes'
-2023-06-09 13:50:07 [✔]  EKS cluster "DeleteMeEKSCluster" in "us-east-2" region is ready
 ```
 
 ## Configure kubectl using AWS CLI
+```
+```
 
 ## Deploy sample application and service
+```
+```
 
 ## Delete namespace
+```
+```
 
 ## Delete cluster
 ```
-[nick@nuc EKS]$ sh 8_delete_cluster.sh 
->>>>>   eksctl get clusters
-NAME                    REGION          EKSCTL CREATED
-DeleteMeEKSCluster      us-east-2       True
-
->>>>> Delete which cluster?
-DeleteMeEKSCluster
-
->>>>>   eksctl delete cluster --name DeleteMeEKSCluster
-2023-06-09 14:08:26 [ℹ]  deleting EKS cluster "DeleteMeEKSCluster"
-2023-06-09 14:08:26 [ℹ]  will drain 0 unmanaged nodegroup(s) in cluster "DeleteMeEKSCluster"
-2023-06-09 14:08:26 [ℹ]  starting parallel draining, max in-flight of 1
-2023-06-09 14:08:27 [ℹ]  deleted 0 Fargate profile(s)
-2023-06-09 14:08:28 [✔]  kubeconfig has been updated
-2023-06-09 14:08:28 [ℹ]  cleaning up AWS load balancers created by Kubernetes objects of Kind Service or Ingress
-2023-06-09 14:08:30 [ℹ]  
-2 sequential tasks: { delete nodegroup "ng-9ef053c7", delete cluster control plane "DeleteMeEKSCluster" [async] 
-}
-2023-06-09 14:08:30 [ℹ]  will delete stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 14:08:30 [ℹ]  waiting for stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7" to get deleted
-2023-06-09 14:08:30 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 14:09:00 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 14:09:38 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 14:10:37 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 14:12:07 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 14:13:37 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 14:15:01 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 14:15:59 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 14:17:47 [ℹ]  waiting for CloudFormation stack "eksctl-DeleteMeEKSCluster-nodegroup-ng-9ef053c7"
-2023-06-09 14:17:47 [ℹ]  will delete stack "eksctl-DeleteMeEKSCluster-cluster"
-2023-06-09 14:17:48 [✔]  all cluster resources were deleted
-
->>>>>   Please check the CloudFormation console -> stack -> resources to ensure everything was deleted.
 ```
 
