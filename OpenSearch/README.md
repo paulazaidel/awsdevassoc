@@ -4,7 +4,7 @@
 
 ### Create Managed Cluster Domain with defaults
 ```
-Mac-2:~ nick$ aws opensearch create-domain --domain-name adgudomain --ebs-options "EBSEnabled=true,VolumeSize=20"
+$ aws opensearch create-domain --domain-name adgudomain --ebs-options "EBSEnabled=true,VolumeSize=20"
 {
     "DomainStatus": {
         "DomainId": "146868985163/adgudomain",
@@ -92,13 +92,119 @@ Mac-2:~ nick$ aws opensearch create-domain --domain-name adgudomain --ebs-option
 ```
 
 ### Create Serverless Collection
+See scripts in the serverless directory.
 ```
+$ sh 1_create_encryption_policy.sh
+{
+    "securityPolicyDetail": {
+        "createdDate": 1686859780559,
+        "lastModifiedDate": 1686859780559,
+        "name": "adgu-policy",
+        "policy": {
+            "Rules": [
+                {
+                    "Resource": [
+                        "collection/adgu-application"
+                    ],
+                    "ResourceType": "collection"
+                }
+            ],
+            "AWSOwnedKey": true
+        },
+        "policyVersion": "MTY4Njg1OTc4MDU1OV8x",
+        "type": "encryption"
+    }
+}
+
+$ sh 2_create_network_policy.sh
+{
+    "securityPolicyDetail": {
+        "createdDate": 1686859784196,
+        "lastModifiedDate": 1686859784196,
+        "name": "adgu-policy",
+        "policy": [
+            {
+                "Rules": [
+                    {
+                        "Resource": [
+                            "collection/adgu-application"
+                        ],
+                        "ResourceType": "dashboard"
+                    },
+                    {
+                        "Resource": [
+                            "collection/adgu-application"
+                        ],
+                        "ResourceType": "collection"
+                    }
+                ],
+                "AllowFromPublic": true,
+                "Description": "Public access for logs collection"
+            }
+        ],
+        "policyVersion": "MTY4Njg1OTc4NDE5Nl8x",
+        "type": "network"
+    }
+}
+
+$ sh 3_create_collection.sh
+{
+    "createCollectionDetail": {
+        "arn": "arn:aws:aoss:us-east-2:146868985163:collection/7m1hnsqqv03i98zh7gu1",
+        "createdDate": 1686859786989,
+        "description": "A collection for storing log data",
+        "id": "7m1hnsqqv03i98zh7gu1",
+        "kmsKeyArn": "auto",
+        "lastModifiedDate": 1686859786989,
+        "name": "adgu-application",
+        "status": "CREATING",
+        "type": "SEARCH"
+    }
+}
+
+$ sh 4_data_access_policy.sh
+{
+    "accessPolicyDetail": {
+        "createdDate": 1686861608981,
+        "lastModifiedDate": 1686861608981,
+        "name": "adgu-data-access-policy",
+        "policy": [
+            {
+                "Rules": [
+                    {
+                        "Resource": [
+                            "collection/adgu-application"
+                        ],
+                        "Permission": [
+                            "aoss:*"
+                        ],
+                        "ResourceType": "collection"
+                    },
+                    {
+                        "Resource": [
+                            "index/adgu-application/*"
+                        ],
+                        "Permission": [
+                            "aoss:*"
+                        ],
+                        "ResourceType": "index"
+                    }
+                ],
+                "Principal": [
+                    "arn:aws:iam::146868985163:user/nick"
+                ]
+            }
+        ],
+        "policyVersion": "MTY4Njg2MTYwODk4MV8x",
+        "type": "data"
+    }
+}
 ```
 
  
 ### List Managed Cluster Domains
 ```
-Mac-2:~ nick$ aws opensearch list-domain-names
+$ aws opensearch list-domain-names
 {
     "DomainNames": [
         {
@@ -112,13 +218,13 @@ Mac-2:~ nick$ aws opensearch list-domain-names
 
 ### List Serverless Collections
 ```
-Mac-2:~ nick$ aws opensearchserverless list-collections --region us-east-1
+$ aws opensearchserverless list-collections
 {
     "collectionSummaries": [
         {
-            "arn": "arn:aws:aoss:us-east-1:146868985163:collection/op127cr3yokl8v5vpgif",
-            "id": "op127cr3yokl8v5vpgif",
-            "name": "deletemecollection",
+            "arn": "arn:aws:aoss:us-east-2:146868985163:collection/7m1hnsqqv03i98zh7gu1",
+            "id": "7m1hnsqqv03i98zh7gu1",
+            "name": "adgu-application",
             "status": "ACTIVE"
         }
     ]
