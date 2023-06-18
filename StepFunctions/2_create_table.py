@@ -4,8 +4,7 @@ import boto3
 
 table_name = "ADGUIOT"
 
-#client = boto3.client('dynamodb', aws_access_key_id ='INSERT_KEY_ID', aws_secret_access_key='INSERT_SECRET', region_name='INSERT_REGION')
-client = boto3.client('dynamodb', aws_access_key_id ='AKIASEMQS3VFTDAHNSFY', aws_secret_access_key='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', region_name='us-east-2')
+client = boto3.client('dynamodb', aws_access_key_id ='INSERT_KEY_ID', aws_secret_access_key='INSERT_SECRET', region_name='INSERT_REGION')
 
 
 # 
