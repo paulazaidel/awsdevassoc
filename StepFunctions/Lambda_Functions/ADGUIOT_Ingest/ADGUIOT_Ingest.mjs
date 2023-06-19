@@ -10,7 +10,7 @@ export const handler = async(event, context) => {
     // Output is the output from the function execution
     const input = { 
       taskToken: event.taskToken,
-      output: JSON.stringify({Payload: {foo: 1, bar: "two"}}) 
+      output: JSON.stringify({Payload: {isVio: false, foo: 1, bar: "two"}}) 
     };
     
     console.log("Returning: " + JSON.stringify(input));
@@ -19,3 +19,4 @@ export const handler = async(event, context) => {
     const response = await client.send(command);
     
 };
+
