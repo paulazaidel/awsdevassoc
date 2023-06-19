@@ -20,5 +20,5 @@ echo
 
 # Delete Policy
 echo ">>>>>   Deleting policy named: ADGUIOT_Lambda_Policy"
-echo '>>>>>   aws iam delete-policy --policy-arn "arn:aws:iam::$acct:policy/ADGUIOT_Lambda_Policy"'
+echo '>>>>>   aws iam delete-policy --policy-arn "arn:aws:iam::'$acct':policy/ADGUIOT_Lambda_Policy"'
 aws iam delete-policy --policy-arn "arn:aws:iam::$acct:policy/ADGUIOT_Lambda_Policy"
